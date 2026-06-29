@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-parchment-100 text-ink-700 font-body antialiased;
+    cursor: default;
+    user-select: none;
+  }
+  
+  input,
+  textarea,
+  [contenteditable='true'] {
+  cursor: text;
+  user-select: text;
+}
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink-700;
+  }
+
+  /* Visible keyboard focus everywhere, per accessibility quality floor */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid theme('colors.saffron.500');
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .tag-chip {
+    @apply inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium tracking-wide uppercase transition-colors;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-ink-100 bg-white px-4 py-2.5 text-sm text-ink-700 placeholder:text-ink-300 focus:border-saffron-500 focus:outline-none transition-colors;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink-600 px-5 py-2.5 text-sm font-semibold text-parchment-100 transition-colors hover:bg-ink-700 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 bg-transparent px-5 py-2.5 text-sm font-semibold text-ink-600 transition-colors hover:border-ink-600;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-saffron-500 px-5 py-2.5 text-sm font-semibold text-ink-700 transition-colors hover:bg-saffron-600 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+}
